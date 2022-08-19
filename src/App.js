@@ -1,25 +1,64 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import { Routes, Route } from 'react-router-dom';
+import Navigation from './components/navigation/nagation.component';
+import Services from './components/services/services.component';
+
+import Home from './routes/home/home.component';
+
+const App = () => {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path='/'  element={<Navigation />}>  
+        <Route index element={<Home />}/> 
+        <Route path='services'  element={<Services />}/> 
+      </Route>     
+    </Routes>
   );
-}
+
+} 
+
+// class App extends React.Component {
+
+//   constructor() {
+//     super();
+//     this.state = { 
+//       hotels: [],
+//       searchField: ''
+//     };
+//   }
+
+//   componentDidMount() {
+//     fetch('https://jsonplaceholder.typicode.com/users')
+//     .then((response) => response.json())
+//     .then(
+//       (users) => this.setState(
+//       () => {return {hotels: users}}
+//     ));
+//   }
+
+//   onSearchChange = (event) => {
+//     const searchField = event.target.value.toLocaleLowerCase();
+//     this.setState(
+//       () => { return { searchField }
+//     });
+//   }
+
+ 
+//  render() {  
+//     const {hotels, searchField } = this.state;
+//     const { onSearchChange } = this;
+//     const filteredHotels = hotels.filter((hotel) => {
+//       return hotel.name.toLocaleLowerCase().includes(searchField);
+//     });
+    
+//     return (
+//       <>
+//         <SearchBox onChangeHandler={onSearchChange} className='search-box' placeholder='find hotels near you'/>
+//         <CardList hotels={ filteredHotels }/>
+//       </>
+//     );
+//   }
+// }
 
 export default App;
