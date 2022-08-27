@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react';
+import React from 'react';
 import './home.styles.css';
 
+import H from '../../data/hotels';
+
 import CardList from '../../components/card-list/card-list.component';
-import Navigation from '../../components/navigation/nagation.component';
 import SearchBox from '../../components/search-box/search-box.component';
 
-const Home = () => {
-
+/*const Home = () => {
   const [searchField, setSearchField] = useState('');
-  const [hotels, setHotels] = useState([]);
+  const [hotels, setHotels] = useState([hotels]);
   const [filteredHotels, setFilteredHotels] = useState(hotels);
 
   useEffect(() => {
@@ -42,49 +42,46 @@ const Home = () => {
     </>
   );
 
-} 
+} */
 
-// class App extends React.Component {
+class Home extends React.Component {
 
-//   constructor() {
-//     super();
-//     this.state = { 
-//       hotels: [],
-//       searchField: ''
-//     };
-//   }
+  constructor() {
+    super();
+    this.state = { 
+      hotels: [],
+      searchField: ''
+    };
+  }
 
-//   componentDidMount() {
-//     fetch('https://jsonplaceholder.typicode.com/users')
-//     .then((response) => response.json())
-//     .then(
-//       (users) => this.setState(
-//       () => {return {hotels: users}}
-//     ));
-//   }
+  componentDidMount() {
+    this.setState(
+      () => {return {hotels: H}}
+    );
+  }
 
-//   onSearchChange = (event) => {
-//     const searchField = event.target.value.toLocaleLowerCase();
-//     this.setState(
-//       () => { return { searchField }
-//     });
-//   }
+  onSearchChange = (event) => {
+    const searchField = event.target.value.toLocaleLowerCase();
+    this.setState(
+      () => { return { searchField }
+    });
+  }
 
  
-//  render() {  
-//     const {hotels, searchField } = this.state;
-//     const { onSearchChange } = this;
-//     const filteredHotels = hotels.filter((hotel) => {
-//       return hotel.name.toLocaleLowerCase().includes(searchField);
-//     });
+ render() {  
+    const {hotels, searchField } = this.state;
+    const { onSearchChange } = this;
+    const filteredHotels = hotels.filter((hotel) => {
+      return hotel.name.toLocaleLowerCase().includes(searchField);
+    });
     
-//     return (
-//       <>
-//         <SearchBox onChangeHandler={onSearchChange} className='search-box' placeholder='find hotels near you'/>
-//         <CardList hotels={ filteredHotels }/>
-//       </>
-//     );
-//   }
-// }
+    return (
+      <>
+        <SearchBox onChangeHandler={onSearchChange} className='search-box' placeholder='find hotels near you'/>
+        <CardList hotels={ filteredHotels }/>
+      </>
+    );
+  }
+}
 
 export default Home;

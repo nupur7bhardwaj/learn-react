@@ -4,7 +4,7 @@ import './card.styles.css';
 const Card  = ({ item }) => (          
     <div className='card'>
         <h5 className='card-title p-2'>{item.name}</h5>
-        <img src={`./images/hotel2.jpeg`} alt={item.name}/>
+        <img src={`./images/${item.image}`} alt={item.name}/>
         <p className='card-text p-2'>With supporting text below as a natural lead-in to additional content.</p>
     </div>
 );

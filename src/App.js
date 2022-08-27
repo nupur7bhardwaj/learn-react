@@ -1,5 +1,7 @@
 
 import { Routes, Route } from 'react-router-dom';
+import Console from './components/console/console.componet';
+import HotelForm from './components/hotel-form/hotel-form.component';
 import Navigation from './components/navigation/nagation.component';
 import Services from './components/services/services.component';
 
@@ -12,6 +14,9 @@ const App = () => {
       <Route path='/'  element={<Navigation />}>  
         <Route index element={<Home />}/> 
         <Route path='services'  element={<Services />}/> 
+        <Route path='console'  element={<Console />}> 
+          <Route path='hotel-form'  element={<HotelForm />}/> 
+        </Route>
       </Route>     
     </Routes>
   );
